@@ -42,6 +42,7 @@
                                     
                                 );
             $options          = wp_parse_args( $options, $defaults );
+            apply_filters('cpt_get_options', $options );
             
             return $options;            
         }
