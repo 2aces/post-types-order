@@ -28,6 +28,25 @@
 
                 $item_details   =   apply_filters( 'the_title', $page->post_title, $page->ID );
                 $item_details   =   apply_filters('cpto/interface_itme_data', $item_details, $page);
+                
+				$item_terms = get_the_terms( $page->ID, 'serie' );
+				if ( $terms && ! is_wp_error( $terms ) ) {
+			 
+				    $terms_links = array();
+				 
+				    foreach ( $terms as $term ) {
+				        $terms_links[] = $term->name;
+				    }
+				                         
+				    $series = ' | Séries: ' . join( ", ", $terms_links ) . '</div>';
+			    }
+    
+				if( has_post_thumbnail( $page->ID ) ) {
+				    $item_thumbnail = get_the_post_thumbnail( $page->ID , 'post_listing_thumbnail' );
+				} else {
+				    $item_thumbnail = 'No Thumbnail Set';
+				}
+				$item_details = $item_details . ' | ID: ' . $page->ID . '<span class="reorder-series">' . $series . '</span><span class="reorder-thumbnail">' . $item_thumbnail . '</span>';
                                 
                 $output .= $indent . '<li id="item_'.$page->ID.'"><span>'. $item_details .'</span>';
                 

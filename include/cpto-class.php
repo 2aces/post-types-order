@@ -259,7 +259,7 @@
                         <div class="icon32" id="icon-edit"><br></div>
                         <h2><?php echo $this->current_post_type->labels->singular_name . ' -  '. __('Re-Order', 'post-types-order') ?></h2>
 
-                        <?php cpt_info_box(); ?>  
+                        <?php //cpt_info_box(); ?>  
                         
                         <div id="ajax-response"></div>
                         
